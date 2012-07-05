@@ -14,8 +14,9 @@ public class Contato {
 	 */
 	public Contato() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+
+	private Long id;
 
 	private String nome;
 
@@ -42,6 +43,21 @@ public class Contato {
 		this.email = email;
 		this.twitter = twitter;
 		this.facebook = facebook;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(final Long id) {
+		this.id = id;
 	}
 
 	/**
