@@ -3,11 +3,13 @@
  */
 package br.com.dclick;
 
+import java.io.Serializable;
+
 /**
  * @author lucas.oliveira
  * 
  */
-public class Contato {
+public class Contato implements Serializable {
 
 	/**
 	 * 
