@@ -61,6 +61,34 @@ public class RESTController {
 		return result;
 	}
 
+	@RequestMapping(value = "/model", method = RequestMethod.PUT)
+	@ResponseBody
+	public Contato atualizarContatoModel(@RequestBody final Contato contato) {
+
+		contato.setNome(contato.getNome() + " Alterado!");
+
+		return contato;
+	}
+
+	@RequestMapping(value = "/params", method = RequestMethod.PUT)
+	@ResponseBody
+	public Contato atualizarContatoParams(@RequestParam final Long id, @RequestParam final String nome,
+			@RequestParam final String celular, @RequestParam final String email, @RequestParam final String twitter,
+			@RequestParam final String facebook) {
+
+		Contato contato = new Contato(nome + " Alterado!", celular, email, twitter, facebook);
+		contato.setId(id);
+
+		return contato;
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public void deletarContato(@PathVariable final Long id) {
+
+		System.out.println("Contato deletado!");
+		// Deletar contato
+	}
+
 	/**
 	 * Listar contatos.
 	 * 
