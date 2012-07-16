@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * The Class RESTController.
@@ -37,7 +38,7 @@ public class RESTController {
 	 *            the facebook
 	 * @return the contato
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/params", method = RequestMethod.POST)
 	public Contato criarContato(@RequestParam final String nome, @RequestParam final String celular,
 			@RequestParam final String email, @RequestParam final String twitter, @RequestParam final String facebook) {
 
@@ -48,7 +49,10 @@ public class RESTController {
 	}
 
 	@RequestMapping(value = "/model", method = RequestMethod.POST)
-	public Contato criarContatoModel(@ModelAttribute final Contato contato) {
+	@ResponseBody
+	public Contato criarContatoModel(@RequestBody final Contato contato) {
+
+		// Implementação do método...
 
 		Contato result = new Contato(contato.getNome(), contato.getCelular(), contato.getEmail(), contato.getTwitter(),
 				contato.getFacebook());
