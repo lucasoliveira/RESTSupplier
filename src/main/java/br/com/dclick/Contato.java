@@ -14,21 +14,26 @@ public class Contato implements Serializable {
 	/**
 	 * 
 	 */
+	private static final long	serialVersionUID	= 8622707467396189619L;
+
+	/**
+	 * 
+	 */
 	public Contato() {
 		super();
 	}
 
-	private Long id;
+	private Long	id;
 
-	private String nome;
+	private String	nome;
 
-	private String celular;
+	private String	celular;
 
-	private String email;
+	private String	email;
 
-	private String twitter;
+	private String	twitter;
 
-	private String facebook;
+	private String	facebook;
 
 	/**
 	 * @param nome
@@ -37,8 +42,8 @@ public class Contato implements Serializable {
 	 * @param twitter
 	 * @param facebook
 	 */
-	public Contato(final String nome, final String celular, final String email, final String twitter,
-			final String facebook) {
+	public Contato(final String nome, final String celular, final String email,
+			final String twitter, final String facebook) {
 		super();
 		this.nome = nome;
 		this.celular = celular;

@@ -38,7 +38,7 @@ public class RESTController {
 	 *            the facebook
 	 * @return the contato
 	 */
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/params", method = RequestMethod.POST)
 	public Contato criarContato(@RequestParam final String nome,
 			@RequestParam final String celular,
 			@RequestParam final String email,
@@ -52,7 +52,10 @@ public class RESTController {
 	}
 
 	@RequestMapping(value = "/model", method = RequestMethod.POST)
+	@ResponseBody
 	public Contato criarContatoModel(@RequestBody final Contato contato) {
+
+		// Implementação do método...
 
 		Contato result = new Contato(contato.getNome(), contato.getCelular(),
 				contato.getEmail(), contato.getTwitter(), contato.getFacebook());
@@ -61,23 +64,36 @@ public class RESTController {
 		return result;
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
-	public Contato atualizarContato(@RequestBody final Contato contato) {
+	@RequestMapping(value = "/model", method = RequestMethod.PUT)
+	@ResponseBody
+	public Contato atualizarContatoModel(@RequestBody final Contato contato) {
 
-		// Realiza atualizações no contato fornecido
+		contato.setNome(contato.getNome() + " Alterado!");
 
-		Contato result = new Contato(contato.getNome(), contato.getCelular(),
-				contato.getEmail(), contato.getTwitter(), contato.getFacebook());
-
-		return result;
+		return contato;
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE)
+	@RequestMapping(value = "/params", method = RequestMethod.PUT)
 	@ResponseBody
+	public Contato atualizarContatoParams(@RequestParam final Long id,
+			@RequestParam final String nome,
+			@RequestParam final String celular,
+			@RequestParam final String email,
+			@RequestParam final String twitter,
+			@RequestParam final String facebook) {
+
+		Contato contato = new Contato(nome + " Alterado!", celular, email,
+				twitter, facebook);
+		contato.setId(id);
+
+		return contato;
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void deletarContato(@PathVariable final Long id) {
 
-		// Deleta o contato
 		System.out.println("Contato deletado!");
+		// Deletar contato
 	}
 
 	/**
